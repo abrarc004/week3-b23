@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+
+<h1>choose your weapon</h1>
+<p id="message">
+	
+</p>
+<button onclick="buttonPressed(0)">rock</button>
+<button onclick="buttonPressed(1)">paper</button>
+<button onclick="buttonPressed(2)">scissor</button>
+
+<h2 id="score">Computer : 0 - User : 0</h2>
+<script type="text/javascript">
+
+	var computerScore = 0;
+	var userScore = 0;
+	
+	function buttonPressed(num){
+		//generate a random number 0,1,2 whic is computer choice
+
+		//computerSelection is a local variable
+		var computerSelection = Math.floor(Math.random()*3)
+		//alert('user select'+num);
+		var  message = "";
+		if(num ==0){
+			if(computerSelection == 0){
+				message ="Computer select rock. It's a draw"
+			}else if(computerSelection == 1){
+				message ="Computer select paper. You lose"
+				computerScore++
+			}else{
+				message ="Computer select scissors. you win"
+				userScore++
+			}
+		}
+		else if(num == 1){
+			if(computerSelection == 0){
+				message ="Computer select rock. You win"
+				userScore++
+			}
+			else if (computerSelection == 1){
+				message ="Computer select paper. It's a draw"
+			}
+			else{
+				message ="Computer select scissors. You lose"
+				computerScore++
+			}
+
+		}
+		else{
+			if(computerSelection == 0){
+				message ="Computer select rock. You lose"
+				computerScore++
+			}
+			else if(computerSelection == 1){
+				message ="Computer select paper. You win "
+				userScore++
+			}
+
+			else{
+				message ="Computer select scissors, it's a draw"
+				}	
+			}
+		
+			document.getElementById("message").innerHTML = message;
+			document.getElementById("score").innerHTML="Computer :"+computerScore+" - User "+userScore;
+
+	}
+</script>
+</body>
+</html>

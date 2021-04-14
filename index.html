@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+</head>
+<body>
+	<h1>HTML + JS</h1>
+	<input type="text" name="username" placeholder="Enter your name" id="username">
+	<button onClick="sayHello()">Click me</button>
+	<p id="message"></p>
+	
+	<hr/>
+	<h2>Test with buttons</h2>
+	<button onClick="activatePressed()" id="activateBTN">Activate Button</button>
+	<button onClick="pressme()" id="pressBTN" disabled="true">Press Me!</button>
+
+
+	<script type="text/javascript">
+		function activatePressed(){
+		if(document.getElementById("pressBTN").disabled){
+			document.getElementById("pressBTN").removeAttribute("disabled");
+			//changing the label of the button
+			document.getElementById("activateBTN").innerHTML="Deactivate button";
+		}
+		else{
+			document.getElementById("pressBTN").setAttribute("disabled", true);
+			document.getElementById("activateBTN").innerHTML ="Activate Button"
+		}
+		}
+
+		function pressme(){
+			alert("Hello World");
+		}
+
+		function sayHello(){
+			//retrive the value (getter) - right
+			var name= document.getElementById("username").value;
+			//alert("Hello "+name);
+
+			document.getElementById("message").innerHTML = "Hello "+name;
+			// set the value to empty string (setter left)
+			// clear the input
+			document.getElementById("username").value ="";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess a number</title>
+</head>
+<body>
+<h1>Guess a number.</h1>
+<p>Enter the number. Between 0 to 100</p>
+<input type="number" id="userNumber">
+<button onclick="guessPressed()" id="guessBtn">click me</button>
+<button onclick="restartPressed()" hidden="true" id="restartBtn">Restart Game</button>
+<p id="message"></p>
+<p id="chance"></p>
+<script type="text/javascript">
+		// It is global because cannot be change during 5 chances
+	var randomNumber = Math.ceil(Math.random()*100);
+	var chances = 5;
+
+	function restartPressed(){
+		chances = 5;
+		randomNumber = Math.ceil(Math.random()*100);
+	document.getElementById("guessBtn").removeAttribute("disabled");
+	document.getElementById("restartBtn").setAttribute("hidden",true)
+	document.getElementById("message").innerHTML ="";
+	document.getElementById("chance").innerHTML ="";
+	document.getElementById("userNumber").value ="";
+	}
+
+	function guessPressed(){
+		var userNumber = document.getElementById("userNumber").value
+		var message ="";
+		var chanceMessage ="";
+		chances--;
+		if(randomNumber > userNumber){
+			message ="Number too small, try again"
+			chanceMessage = chances+ " chances remaining"
+		}
+		else if(randomNumber < userNumber){
+			message ="Number too big, try again"
+			chanceMessage = chances+ " chances remaining"
+		}
+		else{
+			message ="Congratulation, you are correct"
+		}
+		document.getElementById("message").innerHTML = message;
+		document.getElementById("chance").innerHTML = chanceMessage
+		if(chances == 0){
+			document.getElementById("message").innerHTML = "Game over. The number is "+randomNumber;
+			document.getElementById("guessBtn").setAttribute("disabled",true);
+			document.getElementById("restartBtn").removeAttribute("hidden");
+		}
+	
+	}
+</script>
+</body>
+</html>
